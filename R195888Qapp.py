@@ -29,7 +29,7 @@ def main():
     st.title("Caesar Cipher Brute Force Attack")
     st.subheader("BY R195888Q Nigel Kambezo")
 
-    plaintext = st.text_input("Enter the plaintext:")
+    plaintext = st.text_input("Enter the plaintext:", key="plaintext")
     ciphertext = ""
     found_key = -1
 
@@ -55,7 +55,7 @@ def main():
         final_decryption = decrypt(ciphertext, key)
         st.write("Decoded Ciphertext:", final_decryption)
 
-    repeat = st.selectbox("Do you want to encrypt another word?", ("Yes", "No"))
+    repeat = st.selectbox("Do you want to encrypt another word?", ("Yes", "No"), key="repeat")
     if repeat == "Yes":
         main()
     else:
