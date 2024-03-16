@@ -29,31 +29,38 @@ def main():
     st.title("Caesar Cipher Brute Force Attack")
     st.subheader("BY R195888Q Nigel Kambezo")
 
-    plaintext = st.text_input("Enter the plaintext:")
-    ciphertext = ""
-    found_key = -1
+    while True:
+        plaintext = st.text_input("Enter the plaintext:")
+        ciphertext = ""
+        found_key = -1
 
-    if plaintext:
-        key = random.randint(2, 10)
-        ciphertext = encrypt(plaintext, key)
+        if plaintext:
+            key = random.randint(2, 10)
+            ciphertext = encrypt(plaintext, key)
 
-        st.write("Ciphertext:", ciphertext)
+            st.write("Ciphertext:", ciphertext)
 
-        st.write("Brute force attack (decrypting ciphertext)...")
-        for i in range(2, 11):
-            decrypted_text = decrypt(ciphertext, i)
-            st.write("Key:", i, "Decrypted Text:", decrypted_text)
-            if decrypted_text == plaintext:
-                found_key = i
-                break
+            st.write("Brute force attack (decrypting ciphertext)...")
+            for i in range(2, 11):
+                decrypted_text = decrypt(ciphertext, i)
+                st.write("Key:", i, "Decrypted Text:", decrypted_text)
+                if decrypted_text == plaintext:
+                    found_key = i
+                    break
 
-        if found_key != -1:
-            st.write("Brute force found the secret key to be:", found_key)
-        else:
-            st.write("Brute force failed to find the secret key.")
+            if found_key != -1:
+                st.write("Brute force found the secret key to be:", found_key)
+            else:
+                st.write("Brute force failed to find the secret key.")
 
-        final_decryption = decrypt(ciphertext, key)
-        st.write("Decoded Ciphertext:", final_decryption)
+            final_decryption = decrypt(ciphertext, key)
+            st.write("Decoded Ciphertext:", final_decryption)
+
+        repeat = st.selectbox("Do you want to encrypt another word?", ("Yes", "No"))
+        if repeat == "No":
+            break
+
+    st.write("Bye for now!")
 
 if __name__ == "__main__":
     main()
