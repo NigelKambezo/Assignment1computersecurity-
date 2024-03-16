@@ -27,6 +27,7 @@ def decrypt(ciphertext, key):
 
 def main():
     st.title("Caesar Cipher Brute Force Attack")
+    st.subheader("BY R195888Q Nigel Kambezo")
 
     plaintext = st.text_input("Enter the plaintext:")
     ciphertext = ""
